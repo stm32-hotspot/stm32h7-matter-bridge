@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Release Notes for STM32H7 Matter Bridge</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="_htmresc/mini-st_2020.css" />
+  <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div class="row">
+<div class="col-sm-12 col-lg-4">
+<center>
+<h1 id="release-notes-for-stm32h7-matter-bridge">Release Notes for
+<mark>STM32H7 Matter Bridge</mark></h1>
+<p>Copyright © 2023 STMicroelectronics<br />
+</p>
+<a href="https://www.st.com" class="logo"><img
+src="_htmresc/st_logo_2020.png" alt="ST logo" /></a>
+</center>
+<h1 id="license">License</h1>
+<p>This software package is licensed under ST license SLA0048 (the
+“License”). You may not use this package except in compliance with the
+License. You may obtain a copy of the License at: <a
+href="http://www.st.com/SLA0048">SLA0048 Software license
+agreement</a>.</p>
+<h1 id="purpose">Purpose</h1>
+<p>The <mark>STM32H7 Matter Bridge</mark> (STM32 Matter protocol
+software for STM32CubeIDE) - provides a port of the Matter protocol to
+the supported boards</p>
+<ul>
+<li>List of references to user documents
+<ul>
+<li><a
+href="https://www.st.com/content/st_com/en/search.html#q=AN4891-t=resources-page=1">AN4891</a>
+- STM32H72x, STM32H73x, and single-core STM32H74x/75x system
+architecture and performance</li>
+<li><a
+href="https://www.st.com/content/st_com/en/search.html#q=DS12117-t=resources-page=1">DS12117</a>
+- STM32H753xI Datasheet : 32-bit Arm® Cortex®-M7 480MHz MCUs, 2MB Flash,
+1MB RAM, 46 com. and analog interfaces, crypto</li>
+<li><a
+href="https://www.st.com/content/st_com/en/search.html#q=ES0396-t=resources-page=1">ES0396</a>
+- STM32H750xB and STM32H753xI device limitations</li>
+</ul></li>
+</ul>
+</div>
+<section id="update-history" class="col-sm-12 col-lg-8">
+<h1>Update History</h1>
+<div class="collapse">
+<input type="checkbox" id="collapse-section1" checked aria-hidden="true">
+<label for="collapse-section1" aria-hidden="true">V1.0.0-RC1 /
+24-Feb-2023</label>
+<div>
+<h2 id="main-changes">Main Changes</h2>
+<h3
+id="st-beta-release-containing-a-matter-bridge-for-non-matter-devices.">1st
+beta release containing a Matter bridge for non-matter devices.</h3>
+<p>It runs on NUCLEO-H753ZI-Q board Rev.C with Ethernet
+connectivity.</p>
+<h2 id="contents">Contents</h2>
+<p><small>The components flagged by “<span
+class="icon-st-update"></span>” have changed since the previous release.
+“<span class="icon-st-add"></span>” are new.</small></p>
+<p>Drivers</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">BSP Component</th>
+<th style="text-align: left;">Version</th>
+<th></th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BSP STM32H7xx_Nucleo_144</td>
+<td style="text-align: left;"><a
+href="Drivers/BSP/STM32H7xx_Nucleo_144/Release_Notes.html">V1.3.0</a>
+<span class="icon-st-add"></span></td>
+<td></td>
+<td style="text-align: left;"><a
+href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BSP lan8742</td>
+<td style="text-align: left;"><a
+href="Drivers/BSP/Components/lan8742/Release_Notes.html">V1.0.1</a>
+<span class="icon-st-add"></span></td>
+<td></td>
+<td style="text-align: left;"><a
+href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Version</th>
+<th></th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CMSIS</td>
+<td style="text-align: left;"><a
+href="Drivers/CMSIS/docs/General/html/cm_revisionHistory.html">V5.6.0</a>
+<span class="icon-st-add"></span></td>
+<td>cm7</td>
+<td style="text-align: left;"><a
+href="https://opensource.org/licenses/Apache-2.0">Apache-2.0</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CMSIS STM32H7xx</td>
+<td style="text-align: left;"><a
+href="Drivers/CMSIS/Device/ST/STM32H7xx/Release_Notes.html">V1.9.0</a>
+<span class="icon-st-add"></span></td>
+<td></td>
+<td style="text-align: left;"><a
+href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32H7xx_HAL_Driver HAL</td>
+<td style="text-align: left;"><a
+href="Drivers/STM32H7xx_HAL_Driver/Release_Notes.html">V1.9.0</a> <span
+class="icon-st-add"></span></td>
+<td></td>
+<td style="text-align: left;"><a
+href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+</tbody>
+</table>
+<p>Middleware</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">ST modified</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">connectedhomeip (MATTER)</td>
+<td style="text-align: left;"><a
+href="Middlewares/Third_Party/connectedhomeip/README.md">V1.0.0</a>
+<span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a
+href="Middlewares/Third_Party/connectedhomeip/st_readme.txt">2023-27-01</a></td>
+<td style="text-align: left;"><a
+href="https://opensource.org/licenses/Apache-2.0">Apache-2.0</a></td>
+</tr>
+</tbody>
+</table>
+<p>Applications</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Application</th>
+<th style="text-align: left;">Version</th>
+<th></th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Bridge-app</td>
+<td style="text-align: left;">MATTER_V1.0.0 <span
+class="icon-st-add"></span></td>
+<td></td>
+<td style="text-align: left;">Proprietary</td>
+</tr>
+</tbody>
+</table>
+<p>The MATTER applications are enabled by those ported abstractions: -
+Third_Party middlewares used by Matter in the
+connectedhomeip/third_party/ directory: - FreeRTOS - LwIP - MbedTLS -
+nlunit-test - nlassert - nlfaultinjection - nlio - Ethernet, on the
+enabled board.</p>
+<h2 id="known-limitations">Known Limitations</h2>
+<ul>
+<li><p>Matter Test Harness not run on this example.</p></li>
+<li><p>Numerous compilation warnings, mostly in the Matter SDK, in LwIP.
+Some compilation warnings are in the application but are just unused
+arguments.</p></li>
+<li><p>The upstream application build is supported on Windows, MacOS and
+Linux. However the package itself has only been tested on a Windows 10
+host.</p></li>
+</ul>
+<h2 id="development-toolchains-and-compilers">Development Toolchains and
+Compilers</h2>
+<ul>
+<li><em>STM32CubeIDE</em>, version 1.9.0 with gnu 11 and gnu++ 14
+toolchain + ST-Link</li>
+</ul>
+<h2 id="supported-devices-and-boards">Supported Devices and Boards</h2>
+<ul>
+<li>NUCLEO-H753ZI-Q board Rev.C with
+<ul>
+<li>Ethernet connectivity</li>
+<li>ST-LINK firmware version: V3J7M2</li>
+</ul></li>
+</ul>
+<h2 id="compatibilities">Compatibilities</h2>
+<ul>
+<li>NA</li>
+</ul>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li><em>STM32CubeProgrammer</em>, version 2.8.1
+<ul>
+<li>as a post-link processor, required for building a single file
+containing both the bootloader and the user application, and for
+programming the target.</li>
+<li>to check the MCU boot option bytes.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+<footer class="sticky">
+For complete documentation on <mark>STM32</mark> microcontrollers please
+visit <a href="http://www.st.com/stm32"
+class="uri">http://www.st.com/stm32</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Bridge-app README</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="_htmresc/mini-st_2020.css" />
+  <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h2 id="readme-for-matter-bridge-example"><b>README for Matter Bridge
+example</b></h2>
+<p>This application provides an example of Matter bridge with
+NUCLEO-H753ZI-Q board with Ethernet connectivity. This prototype
+application demonstrates dynamic endpoint with device commissioning and
+cluster control. It adds the non-matter device as endpoints on a bridge
+who act as Matter device. In this example, height light devices
+supporting on-off cluster have been added as endpoints.</p>
+<p>This reference design integrates the following:</p>
+<ul>
+<li><a
+href="https://github.com/project-chip/connectedhomeip/tree/master">Matter
+SDK</a></li>
+<li>Various middleware used by Matter SDK such as:
+<ul>
+<li><a
+href="https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/88e32327e975ddde97c390bc5b6c1f8e7d9d239e">FreeRTOS</a></li>
+<li><a
+href="https://github.com/project-chip/connectedhomeip/tree/v1.0.0/third_party/lwip/repo/lwip">LwIP</a></li>
+<li><a
+href="https://github.com/Mbed-TLS/mbedtls/tree/8bb9e46c7c30251a872f8582a39a30ed6cb0f87c">MbedTLS</a></li>
+<li><a
+href="https://github.com/nestlabs/nlio/tree/0e725502c2b17bb0a0c22ddd4bcaee9090c8fb5c">nlio</a></li>
+<li><a
+href="https://github.com/nestlabs/nlunit-test/tree/0c8c9073af9c07aa089861295b7d7ced56ad174d">nlunit-test</a></li>
+<li><a
+href="https://github.com/nestlabs/nlassert/tree/c5892c5ae43830f939ed660ff8ac5f1b91d336d3">nlassert</a></li>
+<li><a
+href="https://github.com/nestlabs/nlfaultinjection/tree/e0de0ab4f52c1d1cc7f3948557a1abd0fceeb5ef">nlfaultinjection</a></li>
+</ul></li>
+</ul>
+<h3 id="directory-contents"><b>Directory contents</b></h3>
+<ul>
+<li>STM32CubeIDE: contain the STM32CubeIDE bridge-app project(.cproject
+and .project files).</li>
+<li>Inc: Includes of the project.</li>
+<li>Src: Sources of the project.</li>
+<li>Readme: this file.</li>
+</ul>
+<h3 id="keywords"><b>Keywords</b></h3>
+<p>MATTER, CHIP, Connectedhomeip, IoT, Internet of Things, Network,
+Connectivity, FreeRTOS, LwIP, Ethernet, commissioning, CSA, Connectivity
+Standard Alliance.</p>
+<h3 id="hardware-and-software-environment"><b>Hardware and Software
+environment</b></h3>
+<ul>
+<li><p>This example runs on NUCLEO-H753ZI-Q board with
+Ethernet.</p></li>
+<li><p>This application has been tested with <a
+href="https://www.st.com/en/evaluation-tools/b-u585i-iot02a.html">B-U585I-IOT02A</a>
+(MB1551-U585AI) board Revision: RevC and can be adapted to other
+supported device and development board.</p></li>
+<li><p>This application uses USART1 to display logs. The serial terminal
+(<a
+href="https://osdn.net/projects/ttssh2/downloads/74780/teraterm-4.106.exe/">Tera-Term</a>
+for example) configuration is as follows:</p>
+<ul>
+<li>BaudRate = 115200 baud</li>
+<li>Word Length = 8 Bits</li>
+<li>Stop Bit = 1</li>
+<li>Parity = None</li>
+<li>Flow control = None</li>
+<li>New Line Receive and Transmit: CR</li>
+</ul></li>
+<li><p>To build this application :</p>
+<ul>
+<li>STM32CubeIDE version &gt;= 1.11.0 is required.</li>
+</ul></li>
+<li><p>To flash this application:</p>
+<ul>
+<li><a
+href="https://www.st.com/en/development-tools/stm32cubeprog.html">STM32CubeProgrammer</a>
+version &gt;= 2.8.1</li>
+</ul></li>
+<li><p>[IPv6] is needed with an Ethernet connection.</p></li>
+</ul>
+<h3 id="how-to-use-it"><b>How to use it ?</b></h3>
+<ul>
+<li><a href="#setting-up-a-linux-computer-with-chip-tool">Setting up a
+Linux computer with chip-tool</a></li>
+<li><a href="#setting-up-the-stm32-project">Setting up the STM32
+Project</a></li>
+<li><a href="#using-chip-tool-to-commission-the-stm32">Using Chip-tool
+to commission the STM32</a></li>
+</ul>
+<h4 id="setting-up-a-linux-computer-with-chip-tool"><b>Setting up a
+Linux computer with chip-tool</b></h4>
+<p>The CHIP Tool (<code>chip-tool</code>) is a Matter controller
+implementation that allows to commission a Matter device into the
+network and to communicate with it using Matter messages, which may
+encode Data Model actions, such as cluster commands.</p>
+<p>The tool also provides other utilities specific to Matter, such as
+parsing of the setup payload or performing discovery actions.</p>
+<p>You can setup chip-tool on a Rasperry Pi 4 or on a Linux
+computer.</p>
+<p>The first step is to download and configure the Matter stack
+development environment as follows:</p>
+<ol type="1">
+<li>Installing dependencies</li>
+</ol>
+<p>Matter can only be installed on a Linux environment (a Linux computer
+or a Raspberry Pi with a Linux OS installed).</p>
+<pre class="console"><code>$ sudo apt-get update</code></pre>
+<pre class="console"><code>$ sudo apt-get install git gcc g++ pkg-config libssl-dev libdbus-1-dev \
+libglib2.0-dev libavahi-client-dev ninja-build python3-venv python3-dev \
+python3-pip unzip libgirepository1.0-dev libcairo2-dev libreadline-dev</code></pre>
+<ol start="2" type="1">
+<li>Cloning Matter v1.0.0 repo and setup submodules</li>
+</ol>
+<pre class="console"><code>$ git clone -b v1.0.0 https://github.com/project-chip/connectedhomeip.git --recurse-submodules</code></pre>
+<p>The Matter repository and his dependencies will be installed, it will
+takes a lot of time (~ 2 hours) and space on the computer (~20 Go).</p>
+<p>Now enter in the Matter root repository:</p>
+<pre class="console"><code>$ cd connectedhomeip</code></pre>
+<ol start="3" type="1">
+<li>Setting up dev environment (it takes between 10 and 15 minutes)</li>
+</ol>
+<pre class="console"><code>$ source ./scripts/activate.sh</code></pre>
+<ol start="4" type="1">
+<li>Building the chip-tool example</li>
+</ol>
+<pre class="console"><code>$ cd examples/chip-tool</code></pre>
+<pre class="console"><code>$ gn gen out/debug</code></pre>
+<p>The Generate-Ninja metabuild system will generate a folder “out” with
+a subfolder “debug” where we will generate the Chip-Tool example.</p>
+<pre class="console"><code>$ ninja -C out/debug</code></pre>
+<p>Note: The above instructions are based on: - The <a
+href="https://github.com/project-chip/connectedhomeip/blob/v1.0.0/docs/guides/BUILDING.md">Matter
+buidling guide</a>. - The <a
+href="https://github.com/project-chip/connectedhomeip/blob/v1.0.0/docs/guides/chip_tool_guide.md">Chip-Tool
+building guide</a>.</p>
+<h5 id="setting-up-the-stm32-project"><b>Setting up the STM32
+Project</b></h5>
+<p>This example is built for a NUCLEO-H753ZI-Q board.</p>
+<ul>
+<li><p>Connect the NUCLEO-H753ZI-Q board to a computer (not necessarily
+the same for chip-tool and the STM32 bridge logs).</p></li>
+<li><p>Connect the STM32 to your network through an Ethernet
+cable.</p></li>
+<li><p>Do a mass erase of the board with STM32CubeProgrammer.</p></li>
+<li><p>Open a terminal with Tera Term VT or another logging
+terminal.</p></li>
+<li><p>Open the project with STM32CubeIDE, build then launch
+debug.</p></li>
+<li><p>In the Tera Term window, open a connection to the COM port
+corresponding to the STM32 board.</p></li>
+<li><p>The Matter STM32 bridge is waiting to be paired to a Matter
+network (commissioning) when the logs look like this:</p></li>
+</ul>
+<p><img src="./_htmresc/commissioning-windows.png" /></p>
+<p>There is now a 5 minute wait for a commissioning, after 5 minutes it
+will be necessary to restart the STM32 as commissioning will no longer
+be possible.</p>
+<h5 id="using-chip-tool-to-commission-the-stm32"><b>Using Chip-tool to
+commission the STM32</b></h5>
+<div class="card fluid warning">
+<p>Note: if you have permission issues with chip-tool commands, try to
+add “sudo” in each command bellow.</p>
+</div>
+<ol type="1">
+<li>Switch back to the computer with Matter V1.0 and chip-tool
+example.</li>
+<li>Run chip-tool in interactive mode.</li>
+</ol>
+<pre class="console"><code>$ ./out/debug/chip-tool interactive start</code></pre>
+<ol start="3" type="1">
+<li>Provisioning (note: sometime this command needs to be run
+twice).</li>
+</ol>
+<pre class="console"><code>$ pairing onnetwork {nodeID} {pincode}</code></pre>
+<p>Replace NodeID by a number of your choice, it will be the identifier
+of the STM32 for matter point of view. The pincode is a password, by
+default it is “20202021” For example, with a NodeID
+<code>1234</code>:</p>
+<pre class="console"><code>pairing onnetwork 1234 20202021</code></pre>
+<p>If you see this screenshot bellow, then the commissioning has been
+done successfully.</p>
+<p><img src="./_htmresc/Commissioning-Complete.png" /></p>
+<p>the bridge contains 8 fake devices (equivalent to 8 endpoints), the
+identifiers of the endpoints attached to these devices are written at
+the beginning of the logs:</p>
+<p><img src="./_htmresc/8-endpoints.png" /></p>
+<p><img src="./_htmresc/devices-and-endpoints.png" /></p>
+<p>You can control these endpoints with the following commands:</p>
+<ol start="4" type="1">
+<li>Toggle light to on/off</li>
+</ol>
+<pre class="console"><code>$ onoff toggle {nodeID} {EndpointID}</code></pre>
+<ol start="5" type="1">
+<li>Light on</li>
+</ol>
+<pre class="console"><code>$ onoff on {nodeID} {EndpointID}</code></pre>
+<ol start="6" type="1">
+<li>Light off</li>
+</ol>
+<pre class="console"><code>$ onoff off {nodeID} {EndpointID}</code></pre>
+<p>A successfull command result in logs in the STM32 application, like
+this screenshot bellow:</p>
+<p><img src="./_htmresc/Light1_ON.png" /></p>
+<h5 id="more-questions"><b>More questions?</b></h5>
+<p>Online support requests can be submitted at <a
+href="https://my.st.com/ols">https://my.st.com/ols</a>.</p>
+</body>
+</html>
